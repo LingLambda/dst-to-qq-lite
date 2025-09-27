@@ -177,10 +177,9 @@ AddSimPostInit(
             return
         end
 
-        local emptybody = jsonUtil.encode({})
         _G.TheWorld:DoPeriodicTask(INTERVAL, function(_)
             log('[轮询请求消息]...')
-            _G.TheSim:QueryServer(HOST .. '/get_msg', onGetGroupMsgResult, "POST", emptybody)
+            _G.TheSim:QueryServer(HOST .. '/get_msg', onGetGroupMsgResult, "GET", nil)
         end)
     end)
 
