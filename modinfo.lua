@@ -2,7 +2,7 @@ name = "DST TO QQ LITE"
 description = [[
 在QQ群中可以与游戏中互通聊天，反之亦然，搭建使用非常简单，教程见mod主页
 可在配置项启用特定消息转发,转发科雷id,开启日志
-默认端口为http post 5526
+默认端口为http post 5562
 ]]
 author = " ling , xsluck "
 version = "0.1.0"
