@@ -15,5 +15,4 @@
 
 ## 🔗 相关信息
 
-- [服务端开源地址](https://github.com/LingLambda/dst-forward-lite)  
-- [本 mod 开源地址](https://github.com/LingLambda/dst-to-qq-lite)
+- [服务端开源地址及教程](https://github.com/LingLambda/dst-forward-lite)  
