@@ -171,17 +171,23 @@ end
 
 -- 初始化群消息获取轮询任务
 AddSimPostInit(
-    function(inst)
-        -- 判断是否地面服务端
-        if not _G.TheNet or not _G.TheNet:GetIsServer() or not inst.ismastershard then
+    function(_)
+        -- 判断是否服务端
+        if not _G.TheNet or not _G.TheNet:GetIsServer() then
             return
         end
 
-        _G.TheWorld:DoPeriodicTask(INTERVAL, function(_)
+        _G.TheWorld:DoPeriodicTask(INTERVAL, function(inst)
+            -- 判断是否主世界
+            if not inst.ismastershard then
+                return
+            end
+
             log('[轮询请求消息]...')
             _G.TheSim:QueryServer(HOST .. '/get_msg', onGetGroupMsgResult, "GET", nil)
         end)
     end)
+
 
 -- 重写饥荒公屏聊天函数
 AddPrefabPostInit("world",
