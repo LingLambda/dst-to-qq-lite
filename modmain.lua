@@ -99,7 +99,7 @@ end
 -- 获取群组消息回调函数
 local function onGetGroupMsgResult(result, isSuccessful, resultCode)
     if resultCode ~= 200 or not result then
-        log("[获取群组消息回调]获取消息失败:" .. jsonUtil.encode(result))
+        log("[获取群组消息回调]获取消息失败，状态码:" .. resultCode .. "消息正文" .. jsonUtil.encode(result))
         return
     end
 
@@ -214,3 +214,5 @@ AddPrefabPostInit("world",
             sendGroupMsg(guid, userid, name, prefab, message, colour, whisper, isemote, user_vanity)
         end
     end)
+
+log("初始化成功")
