@@ -5,7 +5,7 @@ description = [[
 默认端口为http post 5562
 ]]
 author = " ling , xsluck "
-version = "0.1.0"
+version = "0.0.1"
 forumthread = ""
 api_version = 10
 
