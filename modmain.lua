@@ -77,7 +77,7 @@ local function sendDstMsg(sender, msg, source)
         senderName = sender.id
     end
 
-    _G.TheNet:Announce("💬" .. sourceName .. senderName .. ": " .. msg)
+    _G.TheNet:Announce(sourceName .. senderName .. ": " .. msg)
 end
 
 -- 运行命令
@@ -114,12 +114,13 @@ local function onGetGroupMsgResult(result, isSuccessful, resultCode)
     for _, msg in ipairs(resData) do
         local msgType = msg.type
         local data = msg.data
+        local dataStr = jsonUtil.encode(data)
         if msgType == 0 then
-            log('收到消息:' .. msg)
+            log('收到消息:' .. dataStr)
             sendDstMsg(data.sender, data.content, data.source)
         elseif msgType == 1 then
-            log('收到命令:' .. msg)
-            runCommand(data.head, data.contennt)
+            log('收到命令:' .. dataStr)
+            runCommand(data.head, data.content)
         end
     end
 end
@@ -152,12 +153,13 @@ local function sendGroupMsg(guid, userid, name, prefab, message, colour, whisper
         end
     end
 
+
     -- 饥荒消息对象
     local msg = {
         -- 玩家名称
         userName = name,
-        -- 角色名称 如 Wendy
-        survivorsName = prefab,
+        -- 角色名称 如 温蒂
+        survivorsName = _G.STRINGS.NAMES[string.upper(prefab)] or "未知角色",
         -- 科雷id
         kleiId = kid,
         -- 消息正文
